@@ -1,0 +1,24 @@
+# dependencies
+node_modules/
+package-lock.json.bak
+
+# bridge runtime data - machine readings, not source
+bridge/haas-data.json
+bridge/*.log
+bridge/.env
+
+# local config with keys
+.env
+.env.local
+*.key
+
+# build output
+*_FAST.html
+*_OFFLINE.html
+dist/
+build/
+
+# os noise
+.DS_Store
+Thumbs.db
+desktop.ini

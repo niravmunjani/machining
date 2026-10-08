@@ -1,0 +1,29 @@
+# Render reads this automatically.
+# These are plain HTML files - no build, no Docker, no server.
+services:
+  - type: web
+    name: nidc-machining
+    runtime: static
+    staticPublishPath: ./public
+    pullRequestPreviewsEnabled: false
+    headers:
+      # always fetch fresh HTML so a deploy is picked up straight away
+      - path: /*.html
+        name: Cache-Control
+        value: public, max-age=0, must-revalidate
+    routes:
+      - type: rewrite
+        source: /m
+        destination: /mobile.html
+      - type: rewrite
+        source: /phone
+        destination: /mobile.html
+      - type: rewrite
+        source: /pc
+        destination: /scheduler.html
+      - type: rewrite
+        source: /office
+        destination: /scheduler.html
+      - type: rewrite
+        source: /test
+        destination: /diagnose.html
